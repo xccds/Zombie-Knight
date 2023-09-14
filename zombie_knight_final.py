@@ -508,10 +508,8 @@ class Ruby(pygame.sprite.Sprite):
         self.image = sprite_list[int(self.index)]
 
 class Portal(pygame.sprite.Sprite):
-    """A class that if collided with will transport you"""
 
     def __init__(self, x, y, resources, color, portal_group):
-        """Initialize the portal"""
         super().__init__()
 
         #Animation frames
@@ -528,12 +526,10 @@ class Portal(pygame.sprite.Sprite):
 
 
     def update(self):
-        """Update the portal"""
         self.animate(self.portal_sprites, .2)
 
 
     def animate(self, sprite_list, speed):
-        """Animate the portal"""
         if self.index < len(sprite_list) -1:
             self.index += speed
         else:
@@ -626,7 +622,6 @@ class Game():
         self.main_tile_group.draw(self.display_surface)
         self.portal_group.draw(self.display_surface)
         self.player_group.draw(self.display_surface)
-        #self.bullet_group.draw(self.display_surface)
         self.zombie_group.draw(self.display_surface)
         self.ruby_group.draw(self.display_surface)
 
@@ -661,9 +656,9 @@ class Game():
     def add_zombie(self):
         #Check to add a zombie every second
         if pygame.time.get_ticks() - self.zombie_creation_time > 3000:
-                zombie = Zombie(self.resources, self.platform_group, self.portal_group, self.round_number, 5 + self.round_number)
-                self.zombie_group.add(zombie)
-                self.zombie_creation_time = pygame.time.get_ticks()
+            zombie = Zombie(self.resources, self.platform_group, self.portal_group, self.round_number, 5 + self.round_number)
+            self.zombie_group.add(zombie)
+            self.zombie_creation_time = pygame.time.get_ticks()
 
     def add_ruby(self):
         if pygame.time.get_ticks() - self.ruby_creation_time > 6000:
